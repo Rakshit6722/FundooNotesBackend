@@ -1,0 +1,21 @@
+error: 
+      status - 400
+      message - Authorization token is required 
+      url - /api/v1/users/67a99158b47d1324e0e017b2 
+      method - GET 
+      IP - ::1
+     {"timestamp":"2025-02-10T05:43:41.925Z"}
+error: 
+      status - 400
+      message - Authorization token is required 
+      url - /api/v1/users/67a99158b47d1324e0e017b2 
+      method - GET 
+      IP - ::1
+     {"timestamp":"2025-02-10T05:43:50.498Z"}
+error: 
+      status - 400
+      message - Authorization token is required 
+      url - /api/v1/users/67a99158b47d1324e0e017b2 
+      method - GET 
+      IP - ::1
+     {"timestamp":"2025-02-10T05:43:56.098Z"}
