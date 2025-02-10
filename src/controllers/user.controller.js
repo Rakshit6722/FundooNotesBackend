@@ -1,6 +1,6 @@
-const bcrypt = require('bcrypt');
-const httpStatus = require('http-status');
-import { createUser } from '../services/user.service';
+import bcrypt from 'bcrypt';
+import httpStatus from 'http-status';
+import { createUser, checkUserExist } from '../services/user.service';
 
 exports.registerUser = async (req, res) => {
     try {
@@ -13,12 +13,19 @@ exports.registerUser = async (req, res) => {
             })
         }
 
+        if(await checkUserExist(email)){
+            return res.status(400).json({
+                code: httpStatus.BAD_REQUEST,
+                message: 'User already exists'
+            })
+        }
+
         const hashedPassword = await bcrypt.hash(password, 10);
 
         try {
             const user = await createUser(name, email, phone, hashedPassword);
             return res.status(201).json({
-                code: httpStatus.CREATED,
+                code: 201,
                 message: 'User created successfully',
                 data: user
             })
