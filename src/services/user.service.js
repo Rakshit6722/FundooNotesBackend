@@ -20,3 +20,13 @@ exports.createUser = async (name, email, phone, password) => {
         throw err
     }
 }
+
+exports.checkUserExist = async (email) => {
+    try{
+        const user = await User.findOne({email})
+        return user
+    }
+    catch(err){
+        throw err
+    }
+}
