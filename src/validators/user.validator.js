@@ -22,7 +22,10 @@ export const newUserValidator = (req, res, next) => {
   const { error, value } = schema.validate(req.body);
 
   if (error) {
-    return res.status(400).json({ error: error.details[0].message });
+    return res.status(400).json({ 
+      code: 400,
+      message: error.message
+    });
   }
 
   req.validatedBody = value;
