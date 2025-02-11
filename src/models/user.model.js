@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import bcrypt from 'bcrypt';
 
 const userSchema = new Schema(
   {
@@ -22,5 +23,9 @@ const userSchema = new Schema(
     timestamps: true
   }
 );
+
+userSchema.methods.comparePassowrd = async function(candidatePassword){
+  return await bcrypt.compare(candidatePassword, this.password);
+}
 
 export default model('User', userSchema);
