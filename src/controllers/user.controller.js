@@ -79,16 +79,13 @@ export const loginUser = async (req, res) => {
         }
 
         const user = await checkUserExist(email);
-        console.log(user)
+
         if (!user) {
             return res.status(404).json({
                 code: httpStatus.NOT_FOUND,
                 message: 'User not found'
             })
         }
-
-        console.log(user.password)
-        console.log(password)
 
         const passwordMatch = await comparePassword(password, user.password);
         console.log(passwordMatch)
