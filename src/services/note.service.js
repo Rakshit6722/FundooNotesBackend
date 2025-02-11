@@ -36,7 +36,7 @@ export const getNotesService = async (req) => {
     }
 }
 
-export const updateNoteServive = async (req) => {
+export const updateNoteService = async (req) => {
     try {
         const { title, description } = req.body
         const { _id } = req.params
@@ -60,6 +60,22 @@ export const updateNoteServive = async (req) => {
         )
 
         return noteToUpdate
+    } catch (err) {
+        throw err
+    }
+}
+
+export const deleteNoteService = async (req) => {
+    try {
+        const { _id } = req.params
+        const noteToDelete = await Note.findByIdAndUpdate(_id, {
+            isTrash: true
+        }, {
+            new: true
+        })
+
+        return noteToDelete 
+
     } catch (err) {
         throw err
     }

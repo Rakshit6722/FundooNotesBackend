@@ -7,5 +7,6 @@ const router = express.Router();
 router.get('/getNotes', userAuth, noteController.getNotes);
 router.post('/createNote', userAuth, noteController.createNote);
 router.put('/updateNote/:_id', userAuth, noteController.updateNote)
+router.delete('/deleteNote/:_id', userAuth, noteController.deleteNote)
 
 export default router;

@@ -1,4 +1,4 @@
-import { createNoteService, getNotesService, updateNoteServive } from "../services/note.service"
+import { createNoteService, getNotesService, updateNoteService, deleteNoteService } from "../services/note.service"
 import httpStatus from 'http-status'
 
 exports.getNotes = async (req, res) => {
@@ -56,7 +56,7 @@ exports.createNote = async (req, res) => {
 
 exports.updateNote = async (req, res) => {
     try {
-        const updatedNote = await updateNoteServive(req);
+        const updatedNote = await updateNoteService(req);
 
         if (updatedNote) {
             return res.status(200).json({
@@ -71,6 +71,28 @@ exports.updateNote = async (req, res) => {
             })
         }
     } catch (err) {
+        return res.status(500).json({
+            code: httpStatus.INTERNAL_SERVER_ERROR,
+            message: err.message
+        })
+    }
+}
+
+exports.deleteNote = async (req, res) => {
+    try{
+        const noteToDelete = await deleteNoteService(req)
+        if(noteToDelete){
+            return res.status(200).json({
+                code: httpStatus.OK,
+                message: 'Note deleted successfully'
+            })
+        }else{
+            return res.status(500).json({
+                code: httpStatus.INTERNAL_SERVER_ERROR,
+                message: 'Note not deleted'
+            })
+        }
+    }catch(err){
         return res.status(500).json({
             code: httpStatus.INTERNAL_SERVER_ERROR,
             message: err.message
