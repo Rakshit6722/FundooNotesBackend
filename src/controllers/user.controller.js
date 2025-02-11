@@ -2,6 +2,8 @@ import bcrypt, { compare } from 'bcrypt';
 import httpStatus from 'http-status';
 import { createUser, checkUserExist, comparePassword, getUsers } from '../services/user.service';
 import User from '../models/user.model'
+import jwt from 'jsonwebtoken';
+import { generateToken } from '../utils/user.util';
 
 exports.getUsers = async (req, res) => {
     try {
@@ -88,7 +90,7 @@ export const loginUser = async (req, res) => {
         }
 
         const passwordMatch = await comparePassword(password, user.password);
-        console.log(passwordMatch)
+
 
         if (!passwordMatch) {
             return res.status(401).json({
@@ -97,12 +99,15 @@ export const loginUser = async (req, res) => {
             })
         }
 
+        const token = generateToken(user)
+
         const userWithoutPassword = user.toObject();
         delete userWithoutPassword.password;
 
         return res.status(200).json({
             code: httpStatus.OK,
             data: userWithoutPassword,
+            token,
             message: 'Login successful'
         })
     } catch (err) {
