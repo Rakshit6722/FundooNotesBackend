@@ -374,3 +374,84 @@ info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-10T1
 info: Connected to the database. {"timestamp":"2025-02-10T10:18:16.459Z"}
 info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-10T10:18:35.459Z"}
 info: Connected to the database. {"timestamp":"2025-02-10T10:18:35.570Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-10T10:18:46.104Z"}
+info: Connected to the database. {"timestamp":"2025-02-10T10:18:46.117Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T04:08:33.460Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T04:08:33.481Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T04:49:41.003Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T04:49:41.020Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T04:58:30.808Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T04:58:30.872Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T04:59:05.887Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T04:59:05.904Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T04:59:13.245Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T04:59:13.260Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T04:59:24.382Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T04:59:24.397Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T04:59:48.795Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T04:59:48.810Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T04:59:51.750Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T04:59:51.768Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T04:59:56.255Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T04:59:56.268Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:00:06.900Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:00:06.921Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:00:25.035Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:00:25.083Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:00:36.046Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:00:36.060Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:01:02.730Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:01:02.748Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:02:23.531Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:02:23.552Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:02:29.448Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:02:29.481Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:02:35.373Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:02:35.388Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:02:38.756Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:02:38.770Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:02:56.485Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:02:56.500Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:03:26.319Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:03:26.335Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:03:38.791Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:03:38.809Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:03:48.017Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:03:48.035Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:04:11.145Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:04:11.166Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:04:20.558Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:04:20.575Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:04:26.532Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:04:26.576Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:05:22.673Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:05:22.688Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:05:26.403Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:05:26.417Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:08:28.716Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:08:28.729Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:10:07.514Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:10:07.551Z"}
+error: uncaughtException: bcrypt is not defined
+ReferenceError: bcrypt is not defined
+    at model._callee$ (C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\src\models\/user.model.js:26:70)
+    at tryCatch (C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\node_modules\@babel\runtime\helpers\regeneratorRuntime.js:45:16)
+    at Generator.<anonymous> (C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\node_modules\@babel\runtime\helpers\regeneratorRuntime.js:133:17)
+    at Generator.next (C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\node_modules\@babel\runtime\helpers\regeneratorRuntime.js:74:21)
+    at asyncGeneratorStep (C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\node_modules\@babel\runtime\helpers\asyncToGenerator.js:3:17)
+    at _next (C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\node_modules\@babel\runtime\helpers\asyncToGenerator.js:17:9)
+    at C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\node_modules\@babel\runtime\helpers\asyncToGenerator.js:22:7
+    at new Promise (<anonymous>)
+    at model.apply (C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\node_modules\@babel\runtime\helpers\asyncToGenerator.js:14:12)
+    at model.comparePassowrd (C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\src\models\/user.model.js:28:2)
+    at _callee2$ (C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\src\controllers\/user.controller.js:68:36)
+    at tryCatch (C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\node_modules\@babel\runtime\helpers\regeneratorRuntime.js:45:16)
+    at Generator.<anonymous> (C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\node_modules\@babel\runtime\helpers\regeneratorRuntime.js:133:17)
+    at Generator.next (C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\node_modules\@babel\runtime\helpers\regeneratorRuntime.js:74:21)
+    at asyncGeneratorStep (C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\node_modules\@babel\runtime\helpers\asyncToGenerator.js:3:17)
+    at _next (C:\Users\raksh\Desktop\Brideglabz_projects\fundo\fundo-app\node_modules\@babel\runtime\helpers\asyncToGenerator.js:17:9)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {"date":"Tue Feb 11 2025 10:40:07 GMT+0530 (India Standard Time)","error":{},"exception":true,"os":{"loadavg":[0,0,0],"uptime":695361.078},"process":{"argv":["node","C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\src\\index.js"],"cwd":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app","execPath":"C:\\Program Files\\nodejs\\node.exe","gid":null,"memoryUsage":{"arrayBuffers":18264305,"external":21323017,"heapTotal":92602368,"heapUsed":55555648,"rss":136638464},"pid":15456,"uid":null,"version":"v22.12.0"},"stack":"ReferenceError: bcrypt is not defined\n    at model._callee$ (C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\src\\models\\/user.model.js:26:70)\n    at tryCatch (C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\regeneratorRuntime.js:45:16)\n    at Generator.<anonymous> (C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\regeneratorRuntime.js:133:17)\n    at Generator.next (C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\regeneratorRuntime.js:74:21)\n    at asyncGeneratorStep (C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\asyncToGenerator.js:3:17)\n    at _next (C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\asyncToGenerator.js:17:9)\n    at C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\asyncToGenerator.js:22:7\n    at new Promise (<anonymous>)\n    at model.apply (C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\asyncToGenerator.js:14:12)\n    at model.comparePassowrd (C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\src\\models\\/user.model.js:28:2)\n    at _callee2$ (C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\src\\controllers\\/user.controller.js:68:36)\n    at tryCatch (C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\regeneratorRuntime.js:45:16)\n    at Generator.<anonymous> (C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\regeneratorRuntime.js:133:17)\n    at Generator.next (C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\regeneratorRuntime.js:74:21)\n    at asyncGeneratorStep (C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\asyncToGenerator.js:3:17)\n    at _next (C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\asyncToGenerator.js:17:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-02-11T05:10:07.944Z","trace":[{"column":70,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\src\\models\\/user.model.js","function":"model._callee$","line":26,"method":"_callee$","native":false},{"column":16,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\regeneratorRuntime.js","function":"tryCatch","line":45,"method":null,"native":false},{"column":17,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\regeneratorRuntime.js","function":null,"line":133,"method":null,"native":false},{"column":21,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\regeneratorRuntime.js","function":"Generator.next","line":74,"method":"next","native":false},{"column":17,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\asyncToGenerator.js","function":"asyncGeneratorStep","line":3,"method":null,"native":false},{"column":9,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\asyncToGenerator.js","function":"_next","line":17,"method":null,"native":false},{"column":7,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\asyncToGenerator.js","function":null,"line":22,"method":null,"native":false},{"column":null,"file":null,"function":"new Promise","line":null,"method":null,"native":false},{"column":12,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\asyncToGenerator.js","function":"model.apply","line":14,"method":"apply","native":false},{"column":2,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\src\\models\\/user.model.js","function":"model.comparePassowrd","line":28,"method":"comparePassowrd","native":false},{"column":36,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\src\\controllers\\/user.controller.js","function":"_callee2$","line":68,"method":null,"native":false},{"column":16,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\regeneratorRuntime.js","function":"tryCatch","line":45,"method":null,"native":false},{"column":17,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\regeneratorRuntime.js","function":null,"line":133,"method":null,"native":false},{"column":21,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\regeneratorRuntime.js","function":"Generator.next","line":74,"method":"next","native":false},{"column":17,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\asyncToGenerator.js","function":"asyncGeneratorStep","line":3,"method":null,"native":false},{"column":9,"file":"C:\\Users\\raksh\\Desktop\\Brideglabz_projects\\fundo\\fundo-app\\node_modules\\@babel\\runtime\\helpers\\asyncToGenerator.js","function":"_next","line":17,"method":null,"native":false},{"column":5,"file":"node:internal/process/task_queues","function":"processTicksAndRejections","line":105,"method":null,"native":false}]}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:10:45.476Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:10:45.492Z"}
+info: Server started at http://localhost:4000/api/v1/ {"timestamp":"2025-02-11T05:11:16.717Z"}
+info: Connected to the database. {"timestamp":"2025-02-11T05:11:16.734Z"}
