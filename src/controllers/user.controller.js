@@ -8,7 +8,7 @@ import { generateToken } from '../utils/user.util';
 exports.getUsers = async (req, res) => {
     try {
         const users = await getUsers()
-
+        console.log(req.user)
         if (users) {
             return res.status(200).json({
                 code: httpStatus.OK,
