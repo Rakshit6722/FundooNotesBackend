@@ -1,4 +1,4 @@
-import { createNoteService, getNotesService } from "../services/note.service"
+import { createNoteService, getNotesService, updateNoteServive } from "../services/note.service"
 import httpStatus from 'http-status'
 
 exports.getNotes = async (req, res) => {
@@ -51,4 +51,29 @@ exports.createNote = async (req, res) => {
         })
     }
 
+}
+
+
+exports.updateNote = async (req, res) => {
+    try {
+        const updatedNote = await updateNoteServive(req);
+
+        if (updatedNote) {
+            return res.status(200).json({
+                code: httpStatus.OK,
+                data: updatedNote,
+                message: 'Note updated successfully'
+            })
+        } else {
+            return res.status(500).json({
+                code: httpStatus.INTERNAL_SERVER_ERROR,
+                message: 'Note not updated'
+            })
+        }
+    } catch (err) {
+        return res.status(500).json({
+            code: httpStatus.INTERNAL_SERVER_ERROR,
+            message: err.message
+        })
+    }
 }

@@ -2,10 +2,10 @@ import Note from '../models/note.model'
 import httpStatus from 'http-status'
 
 export const createNoteService = async (req) => {
-    try{
-        const {title, description} = req.body
+    try {
+        const { title, description } = req.body
 
-        if(!title || !description){
+        if (!title || !description) {
             throw Error({
                 code: httpStatus.BAD_REQUEST,
                 message: 'Invalid input'
@@ -15,23 +15,52 @@ export const createNoteService = async (req) => {
         const note = await Note.create({
             title,
             description,
-            userId: req.user.id 
+            userId: req.user.id
         })
 
         return note
-    }catch(err){
+    } catch (err) {
         throw err
     }
 }
 
 export const getNotesService = async (req) => {
-    try{
+    try {
         const notes = await Note.find({
             userId: req.user.id,
             isTrash: false
         })
         return notes
-    }catch(err){
+    } catch (err) {
+        throw err
+    }
+}
+
+export const updateNoteServive = async (req) => {
+    try {
+        const { title, description } = req.body
+        const { _id } = req.params
+
+        if (!_id) {
+            throw Error({
+                code: httpStatus.BAD_REQUEST,
+                message: 'Invalid input'
+            })
+        }
+
+        const updatedData = {}
+        if (title) updatedData.title = title
+        if (description) updatedData.description = description
+
+        const noteToUpdate = await Note.findByIdAndUpdate(_id,
+            updatedData,
+            {
+                new: true
+            }
+        )
+
+        return noteToUpdate
+    } catch (err) {
         throw err
     }
 }
