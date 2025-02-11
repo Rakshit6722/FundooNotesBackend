@@ -17,7 +17,7 @@ export const newUserValidator = (req, res, next) => {
       .messages({
         "string.pattern.base": "Password must contain at least one uppercase letter, one special character, and must be at least 8 characters long"
       }),
-  });
+  });  
 
   const { error, value } = schema.validate(req.body);
 
