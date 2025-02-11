@@ -97,8 +97,12 @@ export const loginUser = async (req, res) => {
             })
         }
 
+        const userWithoutPassword = user.toObject();
+        delete userWithoutPassword.password;
+
         return res.status(200).json({
             code: httpStatus.OK,
+            data: userWithoutPassword,
             message: 'Login successful'
         })
     } catch (err) {
