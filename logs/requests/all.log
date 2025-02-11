@@ -199,3 +199,53 @@ info: ::1 - - [11/Feb/2025:05:11:19 +0000] "POST /api/v1/users/login HTTP/1.1" 4
 
 info: ::1 - - [11/Feb/2025:05:11:24 +0000] "POST /api/v1/users/login HTTP/1.1" 404 39 "-" "PostmanRuntime/7.43.0"
 
+info: ::1 - - [11/Feb/2025:05:27:51 +0000] "POST /api/v1/users/login HTTP/1.1" 500 75 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:28:07 +0000] "POST /api/v1/users/login HTTP/1.1" 404 39 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:28:15 +0000] "POST /api/v1/users/login HTTP/1.1" 404 39 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:28:25 +0000] "POST /api/v1/users/login HTTP/1.1" 500 46 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:28:39 +0000] "POST /api/v1/users/login HTTP/1.1" 401 43 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:31:40 +0000] "GET /api/v1/getUsers HTTP/1.1" 404 47 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:32:00 +0000] "GET /api/v1/getUsers HTTP/1.1" 404 47 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:32:01 +0000] "GET /api/v1/getUsers HTTP/1.1" 404 47 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:32:13 +0000] "GET /api/v1/users/getUsers HTTP/1.1" 200 866 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:32:45 +0000] "POST /api/v1/users/login HTTP/1.1" 401 43 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:32:49 +0000] "POST /api/v1/users/login HTTP/1.1" 401 43 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:33:44 +0000] "POST /api/v1/users/login HTTP/1.1" 401 43 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:34:06 +0000] "POST /api/v1/users/login HTTP/1.1" 401 43 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:34:10 +0000] "POST /api/v1/users/login HTTP/1.1" 401 43 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:34:30 +0000] "POST /api/v1/users/login HTTP/1.1" 401 43 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:34:56 +0000] "POST /api/v1/users/register HTTP/1.1" 201 297 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:35:21 +0000] "POST /api/v1/users/login HTTP/1.1" 401 43 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:35:26 +0000] "POST /api/v1/users/login HTTP/1.1" 401 43 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:36:37 +0000] "POST /api/v1/users/login HTTP/1.1" 401 43 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:36:56 +0000] "POST /api/v1/users/login HTTP/1.1" 401 43 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:37:58 +0000] "POST /api/v1/users/login HTTP/1.1" 200 41 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:38:52 +0000] "POST /api/v1/users/login HTTP/1.1" 200 41 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:38:54 +0000] "POST /api/v1/users/login HTTP/1.1" 200 41 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:38:58 +0000] "POST /api/v1/users/login HTTP/1.1" 401 43 "-" "PostmanRuntime/7.43.0"
+
+info: ::1 - - [11/Feb/2025:05:39:01 +0000] "POST /api/v1/users/login HTTP/1.1" 200 41 "-" "PostmanRuntime/7.43.0"
+
