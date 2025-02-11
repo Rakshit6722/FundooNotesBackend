@@ -17,15 +17,12 @@ const userSchema = new Schema(
     password:{
       type: String,
       required: true,
+      select: false
     }
   },
   {
     timestamps: true
   }
 );
-
-userSchema.methods.comparePassowrd = async function(candidatePassword){
-  return await bcrypt.compare(candidatePassword, this.password);
-}
 
 export default model('User', userSchema);
