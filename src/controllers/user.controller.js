@@ -56,7 +56,14 @@ export const loginUser = async (req, res) => {
        
         const { userWithoutPassword, token } = await loginService(req)
 
-        console.log(userWithoutPassword, token)
+        // console.log(userWithoutPassword, token)
+
+        if(!userWithoutPassword || !token){
+            return res.status(404).json({
+                code: httpStatus.NOT_FOUND,
+                message: 'User not found'
+            })
+        }
 
         return res.status(200).json({
             code: httpStatus.OK,
