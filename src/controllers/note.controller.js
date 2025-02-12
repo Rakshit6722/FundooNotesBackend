@@ -80,18 +80,20 @@ exports.updateNote = async (req, res) => {
 
 exports.deleteNote = async (req, res) => {
     try{
-        const noteToDelete = await deleteNoteService(req)
-        if(noteToDelete){
+        const responseMessage = await deleteNoteService(req)
+
+        if(responseMessage){
             return res.status(200).json({
                 code: httpStatus.OK,
-                message: 'Note deleted successfully'
+                message: responseMessage
             })
         }else{
             return res.status(500).json({
                 code: httpStatus.INTERNAL_SERVER_ERROR,
-                message: 'Note not deleted'
+                message: responseMessage
             })
         }
+
     }catch(err){
         return res.status(500).json({
             code: httpStatus.INTERNAL_SERVER_ERROR,

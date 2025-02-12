@@ -18,7 +18,6 @@ const noteSchema = new Schema(
     isTrash: {
         type: Boolean,
         default: false,
-        select: false
     }
   },
   {

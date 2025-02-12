@@ -52,7 +52,7 @@ export const updateNoteService = async (req) => {
                 message: 'Note not found'
             })
         }
-        
+
 
         if (!_id) {
             throw Error({
@@ -81,13 +81,17 @@ export const updateNoteService = async (req) => {
 export const deleteNoteService = async (req) => {
     try {
         const { _id } = req.params
-        const noteToDelete = await Note.findByIdAndUpdate(_id, {
-            isTrash: true
-        }, {
-            new: true
-        })
 
-        return noteToDelete 
+        const note = await Note.findById(_id)
+
+        note.isTrash ? await Note.findByIdAndUpdate(_id, { isTrash: false }) : await Note.findByIdAndUpdate(_id, { isTrash: true })
+
+        if (note.isTrash) {
+            return 'Note restored successfully'
+        } else {
+            return 'Note moved to trash successfully'
+
+        }
 
     } catch (err) {
         throw err
