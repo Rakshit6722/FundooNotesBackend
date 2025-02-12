@@ -110,9 +110,10 @@ export const resetPassword = async (req, res) => {
             })
         }
     }catch(err){
-        res.status(500).json({
-            code: httpStatus.INTERNAL_SERVER_ERROR,
-            message: err.message
+        console.log("error message",err.message.code)
+        res.status(err.code ? err.code : 500).json({
+            code: err.code ? err.code : httpStatus.INTERNAL_SERVER_ERROR,
+            message: err.message    
         })
     }
 }

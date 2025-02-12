@@ -161,8 +161,10 @@ export const resetPasswordService = async (req) => {
             throw new Error('Invalid password')
         }
 
-        if(otp !== resetToken){
-            throw new Error('Invalid OTP')
+        if(otp !== resetToken){ 
+            const error = new Error('Invalid OTP')
+            error.code = 400
+            throw error
         }
 
         resetToken = null
