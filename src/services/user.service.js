@@ -147,10 +147,14 @@ export const forgetPasswordService = async (req) => {
 
 export const resetPasswordService = async (req) => {
     try{
-        const {otp, password} = req.body
+        const {otp, password, email} = req.body
 
-        if(!otp || !password){
+        if(!otp || !password || !email){
             throw new Error('Invalid input')
+        }
+
+        if(! await checkUserExist(email)){
+            throw new Error('User not found')
         }
 
         if(!/^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/.test(password)){
@@ -163,9 +167,7 @@ export const resetPasswordService = async (req) => {
 
         const hashedPassword = await bcrypt.hash(password, 10)
 
-        const userId = req.user.id
-
-        const updatedPasswordUser = await User.findByIdAndUpdate(userId,{
+        const updatedPasswordUser = await User.findOneAndUpdate({email},{
             password: hashedPassword
         })
 
