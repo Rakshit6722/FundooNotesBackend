@@ -165,6 +165,8 @@ export const resetPasswordService = async (req) => {
             throw new Error('Invalid OTP')
         }
 
+        resetToken = null
+
         const hashedPassword = await bcrypt.hash(password, 10)
 
         const updatedPasswordUser = await User.findOneAndUpdate({email},{
