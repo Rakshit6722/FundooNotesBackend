@@ -112,7 +112,7 @@ const comparePassword = async (password, hash) => {
         return await bcrypt.compare(password, hash)
     } catch (err) {
         throw err
-    }
+    } 
 }
 
 let resetToken = ''
