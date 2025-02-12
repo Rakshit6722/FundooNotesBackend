@@ -1,6 +1,6 @@
 import bcrypt, { compare } from 'bcrypt';
 import httpStatus from 'http-status';
-import { createUser, checkUserExist, comparePassword, getUsers, registerUser, loginService } from '../services/user.service';
+import { createUser, checkUserExist, comparePassword, getUsers, registerUser, loginService, forgetPasswordService } from '../services/user.service';
 import User from '../models/user.model'
 import jwt from 'jsonwebtoken';
 import { generateToken } from '../utils/user.util';
@@ -64,6 +64,30 @@ export const loginUser = async (req, res) => {
             message: 'Login successful'
         })
     } catch (err) {
+        return res.status(500).json({
+            code: httpStatus.INTERNAL_SERVER_ERROR,
+            message: err.message
+        })
+    }
+}
+
+export const forgetPassword = async (req, res) => {
+    try{
+        const { resetToken, email} = await forgetPasswordService(req)
+        if(!resetToken){
+            return res.status(500).json({
+                code: httpStatus.INTERNAL_SERVER_ERROR,
+                message: 'OTP not generated'
+            })
+        }else{
+            return res.status(200).json({
+                code: httpStatus.OK,
+                message: 'OTP generated successfully',
+                data: {resetToken, email}
+            })
+        }
+
+    }catch(err){
         return res.status(500).json({
             code: httpStatus.INTERNAL_SERVER_ERROR,
             message: err.message

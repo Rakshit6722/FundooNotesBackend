@@ -1,7 +1,7 @@
 import User from '../models/user.model'
 import bcrypt from 'bcrypt'
 const mongoose = require('mongoose')
-import { generateToken } from '../utils/user.util'
+import { generateResetOtp, generateToken } from '../utils/user.util'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -110,6 +110,35 @@ const comparePassword = async (password, hash) => {
     try {
         return await bcrypt.compare(password, hash)
     } catch (err) {
+        throw err
+    }
+}
+
+let resetToken = ''
+
+export const forgetPasswordService = async (req) => {
+    try{
+        const {email} = req.body
+
+        if(!email){
+            throw new Error('Invalid input')
+        }
+
+        const user = await checkUserExist(email)
+
+        if(!user){
+            throw new Error('User not found')
+        }
+
+        const otp = generateResetOtp()
+
+        console.log("otp", otp)
+
+        resetToken = otp
+
+        return {resetToken, email}
+
+    }catch(err){
         throw err
     }
 }
