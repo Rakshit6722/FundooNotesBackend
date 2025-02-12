@@ -16,3 +16,7 @@ export const generateToken = (user) => {
 
     return token;
 }
+
+export const generateResetOtp = () => {
+    return Math.floor(100000 + Math.random() * 900000);
+}
