@@ -41,6 +41,19 @@ export const updateNoteService = async (req) => {
         const { title, description } = req.body
         const { _id } = req.params
 
+        const note = await Note.findOne({
+            _id,
+            isTrash: false
+        })
+
+        if (!note) {
+            throw Error({
+                code: httpStatus.NOT_FOUND,
+                message: 'Note not found'
+            })
+        }
+        
+
         if (!_id) {
             throw Error({
                 code: httpStatus.BAD_REQUEST,
