@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 const mongoose = require('mongoose')
 import { generateResetOtp, generateToken } from '../utils/user.util'
 import dotenv from 'dotenv'
+import { NotBeforeError } from 'jsonwebtoken'
 
 dotenv.config()
 
@@ -111,7 +112,7 @@ const comparePassword = async (password, hash) => {
         return await bcrypt.compare(password, hash)
     } catch (err) {
         throw err
-    }
+    } 
 }
 
 let resetToken = ''
@@ -138,6 +139,43 @@ export const forgetPasswordService = async (req) => {
 
         return {resetToken, email}
 
+    }catch(err){
+        throw err
+    }
+}
+
+
+export const resetPasswordService = async (req) => {
+    try{
+        const {otp, password, email} = req.body
+
+        if(!otp || !password || !email){
+            throw new Error('Invalid input')
+        }
+
+        if(! await checkUserExist(email)){
+            throw new Error('User not found')
+        }
+
+        if(!/^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/.test(password)){
+            throw new Error('Invalid password')
+        }
+
+        if(otp !== resetToken){ 
+            const error = new Error('Invalid OTP')
+            error.code = 400
+            throw error
+        }
+
+        resetToken = null
+
+        const hashedPassword = await bcrypt.hash(password, 10)
+
+        const updatedPasswordUser = await User.findOneAndUpdate({email},{
+            password: hashedPassword
+        })
+
+        return updatedPasswordUser
     }catch(err){
         throw err
     }
