@@ -1,6 +1,6 @@
 import bcrypt, { compare } from 'bcrypt';
 import httpStatus from 'http-status';
-import { createUser, checkUserExist, comparePassword, getUsers, registerUser, loginService, forgetPasswordService, updateUserService, deleteUser, deleteUserService, resetPasswordService } from '../services/user.service';
+import { createUser, checkUserExist, comparePassword, getUsers, registerUser, loginService, forgetPasswordService, resetPasswordService, updateUserService, deleteUser, deleteUserService } from '../services/user.service';
 import User from '../models/user.model'
 import jwt from 'jsonwebtoken';
 import { generateToken } from '../utils/user.util';
@@ -76,7 +76,6 @@ export const loginUser = async (req, res) => {
 export const forgetPassword = async (req, res) => {
     try{
         const { resetToken, email} = await forgetPasswordService(req)
-        console.log("resetToken",resetToken)
         if(!resetToken){
             return res.status(500).json({
                 code: httpStatus.INTERNAL_SERVER_ERROR,
@@ -98,6 +97,28 @@ export const forgetPassword = async (req, res) => {
     }
 }
 
+export const resetPassword = async (req, res) => {
+    try{
+        const updatedPasswordUser = await resetPasswordService(req)
+        if(updatedPasswordUser){
+            return res.status(200).json({
+                code: httpStatus.OK,
+                message: 'Password updated successfully'
+            })
+        }else{
+            return res.status(500).json({
+                code: httpStatus.INTERNAL_SERVER_ERROR,
+                message: 'Password not updated'
+            })
+        }
+    }catch(err){
+        console.log("error message",err.message.code)
+        res.status(err.code ? err.code : 500).json({
+            code: err.code ? err.code : httpStatus.INTERNAL_SERVER_ERROR,
+            message: err.message    
+        })
+    }
+} 
 
 exports.updateUser = async (req, res) => {
     try {

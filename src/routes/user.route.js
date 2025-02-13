@@ -8,9 +8,7 @@ const router = express.Router();
 router.get('/', userAuth, userController.getUsers);
 router.post('/', newUserValidator, userController.registerUser);
 router.post('/login', userController.loginUser);
-router.put('/:id', userAuth, userController.updateUser);
-router.delete('/:id', userAuth, userController.deleteUser);
 router.post('/forgetPassword', userController.forgetPassword)
-// router.put('/resetPassword', userController.resetPassword)
+router.put('/resetPassword', userController.resetPassword)
 
 export default router;

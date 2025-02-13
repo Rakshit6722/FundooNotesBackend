@@ -5,39 +5,28 @@ import { generateResetOtp, generateToken } from '../utils/user.util'
 import dotenv from 'dotenv'
 import { NotBeforeError } from 'jsonwebtoken'
 import httpStatus from 'http-status'
-import { response } from 'express'
 
 dotenv.config()
 
 exports.getUsers = async () => {
     try {
-        return await User.find({
-            isTrash: false
-        })
+        return await User.find()
     } catch (err) {
         throw err
     }
 }
 
-exports.registerUser = async (req) => {
+exports.registerUser = async (req,res) => {
     try {
         const { name, email, phone, password } = req.validatedBody;
 
         if (!name || !email || !password) {
-            // return response.status(400).json({
-            //     code: httpStatus.BAD_REQUEST,
-            //     message: 'Invalid input'
-            // })
             const error = new Error('Invalid input')
             error.code = 400
             throw error
         }
 
         if (await checkUserExist(email)) {
-            // return response.status(400).json({
-            //     code: httpStatus.BAD_REQUEST,
-            //     message: 'User already exists'
-            // })
             const error = new Error('User already exists')
             error.code = 400
             throw error
@@ -67,10 +56,9 @@ exports.loginService = async (req) => {
         const { email, password } = req.body;
 
         if (!email || !password) {
-            throw Error({
-                code: httpStatus.BAD_REQUEST,
-                message: 'Invalid input'
-            })
+            const error = new Error('Invalid input')
+            error.code = 400
+            throw error
         }
 
         const user = await checkUserExist(email);
@@ -78,10 +66,6 @@ exports.loginService = async (req) => {
         
 
         if (!user) {
-            // return response.status(404).json({
-            //     code: httpStatus.NOT_FOUND,
-            //     message: 'User not found'
-            // })
             const error = new Error('User not found')
             error.code = 404
             throw error
@@ -91,12 +75,8 @@ exports.loginService = async (req) => {
 
 
         if (!passwordMatch) {
-            // throw Error({
-            //     code: httpStatus.UNAUTHORIZED,
-            //     message: 'Incorrect password'
-            // })
             const error = new Error('Incorrect password')
-            error.code = 401  
+            error.code = 401
             throw error
         }
 
@@ -112,59 +92,6 @@ exports.loginService = async (req) => {
     }
 }
 
-
-export const updateUserService = async (req) => {
-    try {
-        const { id } = req.params;
-        const { name, email, phone } = req.body;
-
-        if (!id) {
-            throw new Error('Invalid input')
-        }
-
-        const user = await User.findById(id)
-        const  userToUpdate = user.toObject()
-        if(name) userToUpdate.name = name
-        if(email) userToUpdate.email = email
-        if(phone) userToUpdate.phone = phone
-
-        const updatedUser = User.findOneAndUpdate({ _id: id }, userToUpdate, { new: true })
-
-        return updatedUser
-    } catch (err) {
-        throw err
-    }
-}
-
-export const deleteUserService = async (req) => {
-    try {
-        const { id } = req.params;
-
-        if (!id) {
-            throw new Error('Invalid input');
-        }
-
-        const user = await User.findById(id);
-
-        if (!user) {
-            throw new Error('User not found');
-        }
-
-        const updatedUser = await User.findByIdAndUpdate(
-            id,
-            { isTrash: !user.isTrash },
-            { new: true }
-        );
-
-        if (updatedUser.isTrash) {
-            return "User deleted successfully";
-        } else {
-            return "User restored successfully";
-        }
-    } catch (err) {
-        throw err;
-    }
-};
 
 const checkUserExist = async (email) => {
     try {
@@ -213,3 +140,39 @@ export const forgetPasswordService = async (req) => {
     }
 }
 
+
+export const resetPasswordService = async (req) => {
+    try{
+        const {otp, password, email} = req.body
+
+        if(!otp || !password || !email){
+            throw new Error('Invalid input')
+        }
+
+        if(! await checkUserExist(email)){
+            throw new Error('User not found')
+        }
+
+        if(!/^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/.test(password)){
+            throw new Error('Invalid password')
+        }
+
+        if(otp !== resetToken){ 
+            const error = new Error('Invalid OTP')
+            error.code = 400
+            throw error
+        }
+
+        resetToken = null
+
+        const hashedPassword = await bcrypt.hash(password, 10)
+
+        const updatedPasswordUser = await User.findOneAndUpdate({email},{
+            password: hashedPassword
+        })
+
+        return updatedPasswordUser
+    }catch(err){
+        throw err
+    }
+}

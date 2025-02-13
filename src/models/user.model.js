@@ -19,10 +19,6 @@ const userSchema = new Schema(
       required: true,
       select: false
     },
-    isTrash:{
-      type: Boolean,
-      default: false,
-    }
   },
   {
     timestamps: true
