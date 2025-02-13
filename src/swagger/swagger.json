@@ -1,0 +1,388 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "API Documentation",
+      "description": "API documentation for user and notes management"
+    },
+    "host": "localhost:4000",
+    "basePath": "/api/v1",
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/users": {
+        "get": {
+          "tags": ["User"],
+          "summary": "Get all users",
+          "description": "Fetches all users",
+          "security": [{"BearerAuth": []}],
+          "operationId": "getUsers",
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "type": "string",
+              "description": "Bearer token"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Users fetched successfully",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "post": {
+          "tags": ["User"],
+          "summary": "Register a new user",
+          "description": "Creates a new user",
+          "operationId": "registerUser",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/NewUser"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "User created successfully",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "400": {
+              "description": "Invalid input"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/users/login": {
+        "post": {
+          "tags": ["User"],
+          "summary": "Login user",
+          "description": "Logs in a user",
+          "operationId": "loginUser",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Login"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Login successful",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid input"
+            },
+            "401": {
+              "description": "Incorrect password"
+            },
+            "404": {
+              "description": "User not found"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/users/forgetPassword": {
+        "post": {
+          "tags": ["User"],
+          "summary": "Forget password",
+          "description": "Generates OTP for password reset",
+          "operationId": "forgetPassword",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ForgetPassword"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OTP generated successfully",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "resetToken": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/users/resetPassword": {
+        "put": {
+          "tags": ["User"],
+          "summary": "Reset password",
+          "description": "Resets the user's password",
+          "operationId": "resetPassword",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ResetPassword"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Password updated successfully"
+            },
+            "400": {
+              "description": "Invalid OTP"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/notes/getNotes": {
+        "get": {
+          "tags": ["Notes"],
+          "summary": "Get all notes",
+          "description": "Fetches all notes for the authenticated user",
+          "operationId": "getNotes",
+          "security": [{"BearerAuth": []}],
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "type": "string",
+              "description": "Bearer token"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Notes fetched successfully",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Note"
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/notes/createNote": {
+        "post": {
+          "tags": ["Notes"],
+          "summary": "Create a new note",
+          "description": "Creates a new note for the authenticated user",
+          "security": [{"BearerAuth": []}],
+          "operationId": "createNote",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/NewNote"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Note created successfully",
+              "schema": {
+                "$ref": "#/definitions/Note"
+              }
+            },
+            "400": {
+              "description": "Invalid input"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/notes/updateNote/{_id}": {
+        "put": {
+          "tags": ["Notes"],
+          "summary": "Update a note",
+          "description": "Updates an existing note for the authenticated user",
+          "security": [{"BearerAuth": []}],
+          "operationId": "updateNote",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "type": "string",
+              "description": "Bearer token"
+            },
+            {
+              "name": "_id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "Note ID"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/UpdateNote"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Note updated successfully",
+              "schema": {
+                "$ref": "#/definitions/Note"
+              }
+            },
+            "400": {
+              "description": "Invalid input"
+            },
+            "404": {
+              "description": "Note not found"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/notes/deleteNote/{_id}": {
+        "delete": {
+          "tags": ["Notes"],
+          "summary": "Delete a note",
+          "description": "Deletes an existing note for the authenticated user",
+          "security": [{"BearerAuth": []}],
+          "operationId": "deleteNote",
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "type": "string",
+              "description": "Bearer token"
+            },
+            {
+              "name": "_id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "Note ID"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Note deleted successfully"
+            },
+            "404": {
+              "description": "Note not found"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+            "password": {
+                "type": "string"
+            }
+        }
+      },
+      "Note": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "isTrash": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
