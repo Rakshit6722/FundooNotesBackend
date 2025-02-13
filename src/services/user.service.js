@@ -1,7 +1,7 @@
 import User from '../models/user.model'
 import bcrypt from 'bcrypt'
 const mongoose = require('mongoose')
-import { generateresponseetOtp, generateToken } from '../utils/user.util'
+import { generateResetOtp, generateToken } from '../utils/user.util'
 import dotenv from 'dotenv'
 import { NotBeforeError } from 'jsonwebtoken'
 import httpStatus from 'http-status'
@@ -11,7 +11,9 @@ dotenv.config()
 
 exports.getUsers = async () => {
     try {
-        return await User.find()
+        return await User.find({
+            isTrash: false
+        })
     } catch (err) {
         throw err
     }
@@ -111,6 +113,59 @@ exports.loginService = async (req) => {
 }
 
 
+export const updateUserService = async (req) => {
+    try {
+        const { id } = req.params;
+        const { name, email, phone } = req.body;
+
+        if (!id) {
+            throw new Error('Invalid input')
+        }
+
+        const user = await User.findById(id)
+        const  userToUpdate = user.toObject()
+        if(name) userToUpdate.name = name
+        if(email) userToUpdate.email = email
+        if(phone) userToUpdate.phone = phone
+
+        const updatedUser = User.findOneAndUpdate({ _id: id }, userToUpdate, { new: true })
+
+        return updatedUser
+    } catch (err) {
+        throw err
+    }
+}
+
+export const deleteUserService = async (req) => {
+    try {
+        const { id } = req.params;
+
+        if (!id) {
+            throw new Error('Invalid input');
+        }
+
+        const user = await User.findById(id);
+
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(
+            id,
+            { isTrash: !user.isTrash },
+            { new: true }
+        );
+
+        if (updatedUser.isTrash) {
+            return "User deleted successfully";
+        } else {
+            return "User restored successfully";
+        }
+    } catch (err) {
+        throw err;
+    }
+};
+
 const checkUserExist = async (email) => {
     try {
         const user = await User.findOne({ email }).select('+password')
@@ -129,7 +184,7 @@ const comparePassword = async (password, hash) => {
     } 
 }
 
-let responseetToken = ''
+let resetToken = ''
 
 export const forgetPasswordService = async (req) => {
     try{
@@ -145,52 +200,16 @@ export const forgetPasswordService = async (req) => {
             throw new Error('User not found')
         }
 
-        const otp = generateresponseetOtp()
+        const otp = generateResetOtp()
 
         console.log("otp", otp)
 
-        responseetToken = otp
+        resetToken = otp
 
-        return {responseetToken, email}
+        return {resetToken, email}
 
     }catch(err){
         throw err
     }
 }
 
-
-export const responseetPasswordService = async (req) => {
-    try{
-        const {otp, password, email} = req.body
-
-        if(!otp || !password || !email){
-            throw new Error('Invalid input')
-        }
-
-        if(! await checkUserExist(email)){
-            throw new Error('User not found')
-        }
-
-        if(!/^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/.test(password)){
-            throw new Error('Invalid password')
-        }
-
-        if(otp !== responseetToken){ 
-            const error = new Error('Invalid OTP')
-            error.code = 400
-            throw error
-        }
-
-        responseetToken = null
-
-        const hashedPassword = await bcrypt.hash(password, 10)
-
-        const updatedPasswordUser = await User.findOneAndUpdate({email},{
-            password: hashedPassword
-        })
-
-        return updatedPasswordUser
-    }catch(err){
-        throw err
-    }
-}

@@ -1,9 +1,10 @@
 import bcrypt, { compare } from 'bcrypt';
 import httpStatus from 'http-status';
-import { createUser, checkUserExist, comparePassword, getUsers, registerUser, loginService, forgetPasswordService, resetPasswordService } from '../services/user.service';
+import { createUser, checkUserExist, comparePassword, getUsers, registerUser, loginService, forgetPasswordService, updateUserService, deleteUser, deleteUserService, resetPasswordService } from '../services/user.service';
 import User from '../models/user.model'
 import jwt from 'jsonwebtoken';
 import { generateToken } from '../utils/user.util';
+import { response } from 'express';
 
 exports.getUsers = async (req, res) => {
     try {
@@ -75,6 +76,7 @@ export const loginUser = async (req, res) => {
 export const forgetPassword = async (req, res) => {
     try{
         const { resetToken, email} = await forgetPasswordService(req)
+        console.log("resetToken",resetToken)
         if(!resetToken){
             return res.status(500).json({
                 code: httpStatus.INTERNAL_SERVER_ERROR,
@@ -96,25 +98,49 @@ export const forgetPassword = async (req, res) => {
     }
 }
 
-export const resetPassword = async (req, res) => {
-    try{
-        const updatedPasswordUser = await resetPasswordService(req)
-        if(updatedPasswordUser){
+
+exports.updateUser = async (req, res) => {
+    try {
+        const updatedUser = await updateUserService(req)
+        if(updatedUser){
             return res.status(200).json({
                 code: httpStatus.OK,
-                message: 'Password updated successfully'
+                message: 'User updated successfully',
+                data: updatedUser
             })
         }else{
             return res.status(500).json({
                 code: httpStatus.INTERNAL_SERVER_ERROR,
-                message: 'Password not updated'
+                message: 'User not updated'
             })
         }
     }catch(err){
-        console.log("error message",err.message.code)
-        res.status(err.code ? err.code : 500).json({
-            code: err.code ? err.code : httpStatus.INTERNAL_SERVER_ERROR,
-            message: err.message    
+        return res.status(500).json({
+            code: httpStatus.INTERNAL_SERVER_ERROR,
+            message: err.message
         })
     }
-} 
+}
+
+
+exports.deleteUser = async (req ,res) => {
+    try{
+        const responseMessage = await deleteUserService(req)
+        if(responseMessage){
+            return res.status(200).json({
+                code: httpStatus.OK,
+                message: responseMessage
+            })
+        }else{
+            return res.status(500).json({
+                code: httpStatus.INTERNAL_SERVER_ERROR,
+                message: 'User not deleted'
+            })
+        }
+    }catch(err){
+        return res.status(500).json({
+            code: httpStatus.INTERNAL_SERVER_ERROR,
+            message: err.message
+    })
+    }
+}
