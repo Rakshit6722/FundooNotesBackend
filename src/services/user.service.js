@@ -1,9 +1,11 @@
 import User from '../models/user.model'
 import bcrypt from 'bcrypt'
 const mongoose = require('mongoose')
-import { generateResetOtp, generateToken } from '../utils/user.util'
+import { generateresponseetOtp, generateToken } from '../utils/user.util'
 import dotenv from 'dotenv'
 import { NotBeforeError } from 'jsonwebtoken'
+import httpStatus from 'http-status'
+import { response } from 'express'
 
 dotenv.config()
 
@@ -20,17 +22,23 @@ exports.registerUser = async (req) => {
         const { name, email, phone, password } = req.validatedBody;
 
         if (!name || !email || !password) {
-            return res.status(400).json({
-                code: httpStatus.BAD_REQUEST,
-                message: 'Invalid input'
-            })
+            // return response.status(400).json({
+            //     code: httpStatus.BAD_REQUEST,
+            //     message: 'Invalid input'
+            // })
+            const error = new Error('Invalid input')
+            error.code = 400
+            throw error
         }
 
         if (await checkUserExist(email)) {
-            return res.status(400).json({
-                code: httpStatus.BAD_REQUEST,
-                message: 'User already exists'
-            })
+            // return response.status(400).json({
+            //     code: httpStatus.BAD_REQUEST,
+            //     message: 'User already exists'
+            // })
+            const error = new Error('User already exists')
+            error.code = 400
+            throw error
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -57,7 +65,7 @@ exports.loginService = async (req) => {
         const { email, password } = req.body;
 
         if (!email || !password) {
-            return res.status(400).json({
+            throw Error({
                 code: httpStatus.BAD_REQUEST,
                 message: 'Invalid input'
             })
@@ -68,20 +76,26 @@ exports.loginService = async (req) => {
         
 
         if (!user) {
-            return res.status(404).json({
-                code: httpStatus.NOT_FOUND,
-                message: 'User not found'
-            })
+            // return response.status(404).json({
+            //     code: httpStatus.NOT_FOUND,
+            //     message: 'User not found'
+            // })
+            const error = new Error('User not found')
+            error.code = 404
+            throw error
         }
 
         const passwordMatch = await comparePassword(password, user.password);
 
 
         if (!passwordMatch) {
-            return res.status(401).json({
-                code: httpStatus.UNAUTHORIZED,
-                message: 'Incorrect password'
-            })
+            // throw Error({
+            //     code: httpStatus.UNAUTHORIZED,
+            //     message: 'Incorrect password'
+            // })
+            const error = new Error('Incorrect password')
+            error.code = 401  
+            throw error
         }
 
         const token = generateToken(user)
@@ -115,7 +129,7 @@ const comparePassword = async (password, hash) => {
     } 
 }
 
-let resetToken = ''
+let responseetToken = ''
 
 export const forgetPasswordService = async (req) => {
     try{
@@ -131,13 +145,13 @@ export const forgetPasswordService = async (req) => {
             throw new Error('User not found')
         }
 
-        const otp = generateResetOtp()
+        const otp = generateresponseetOtp()
 
         console.log("otp", otp)
 
-        resetToken = otp
+        responseetToken = otp
 
-        return {resetToken, email}
+        return {responseetToken, email}
 
     }catch(err){
         throw err
@@ -145,7 +159,7 @@ export const forgetPasswordService = async (req) => {
 }
 
 
-export const resetPasswordService = async (req) => {
+export const responseetPasswordService = async (req) => {
     try{
         const {otp, password, email} = req.body
 
@@ -161,13 +175,13 @@ export const resetPasswordService = async (req) => {
             throw new Error('Invalid password')
         }
 
-        if(otp !== resetToken){ 
+        if(otp !== responseetToken){ 
             const error = new Error('Invalid OTP')
             error.code = 400
             throw error
         }
 
-        resetToken = null
+        responseetToken = null
 
         const hashedPassword = await bcrypt.hash(password, 10)
 

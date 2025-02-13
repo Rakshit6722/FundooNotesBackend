@@ -44,8 +44,8 @@ exports.registerUser = async (req, res) => {
         }
 
     } catch (err) {
-        return res.status(500).json({
-            code: httpStatus.INTERNAL_SERVER_ERROR,
+        return res.status(err.code ? err.code : 500).json({
+            code: err.code ? err.code : httpStatus.INTERNAL_SERVER_ERROR,
             message: err.message
         })
     }
@@ -64,8 +64,9 @@ export const loginUser = async (req, res) => {
             message: 'Login successful'
         })
     } catch (err) {
-        return res.status(500).json({
-            code: httpStatus.INTERNAL_SERVER_ERROR,
+        console.log(err)
+        return res.status(err.code ? err.code : 500).json({
+            code: err.code ? err.code :  httpStatus.INTERNAL_SERVER_ERROR,
             message: err.message
         })
     }
